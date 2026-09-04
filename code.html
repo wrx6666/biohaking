@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Добрый Доктор — Центр превентивной медицины и долголетия</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style id="bio-wave-animations">
+@keyframes rotate-bio {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rotate-bio-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes wave-dash-flow {
+  0% { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: 0; }
+}
+.bio-orbital-cw {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rotate-bio 38s linear infinite;
+}
+.bio-orbital-ccw {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rotate-bio-reverse 26s linear infinite;
+}
+.bio-flow-line {
+  stroke-dasharray: 20 8;
+  animation: wave-dash-flow 18s linear infinite;
+}
+.bio-flow-pulse {
+  stroke-dasharray: 8 6;
+  animation: wave-dash-flow 12s linear infinite reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bio-orbital-cw, .bio-orbital-ccw, .bio-flow-line, .bio-flow-pulse, .pulse-dot, .animate-bounce, .animate-pulse {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tech-obsidian": "#0b1219",
+            "tech-navy": "#0f172a",
+            "clinical-ice": "#effdf4",
+            "clinical-slate": "#e3f1e9",
+            "clinical-border": "#d8e6de",
+            "clinical-subtle": "#414943",
+            "emerald-core": "#14422d",
+            "emerald-tech": "#2d5a43",
+            "emerald-deep": "#0e291c",
+            "emerald-pale": "#effdf4",
+            "lime-tech": "#436900",
+            "forest": "#14422d"
+          },
+          fontFamily: {
+            sans: ["'Manrope'", "'Plus Jakarta Sans'", "sans-serif"],
+            mono: ["'JetBrains Mono'", "monospace"]
+          }
+        }
+      }
+    };
+</script>
+<style>
+    @layer base {
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #effdf4;
+        color: #121e19;
+        font-family: 'Manrope', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+    }
+
+    .clinical-grid {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(20, 66, 45, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20, 66, 45, 0.04) 1px, transparent 1px);
+    }
+
+    @keyframes pulseGlowDot {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      50% {
+        transform: scale(1.6);
+        opacity: 0.3;
+      }
+    }
+
+    .pulse-dot {
+      animation: pulseGlowDot 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .nordic-glass {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(216, 230, 222, 0.9);
+      box-shadow: 
+        0 10px 30px -5px rgba(20, 66, 45, 0.05),
+        0 1px 2px 0 rgba(255, 255, 255, 0.9) inset;
+    }
+
+    .nordic-console {
+      background: #ffffff;
+      border: 1px solid #d8e6de;
+      box-shadow: 
+        0 20px 40px -15px rgba(20, 66, 45, 0.06),
+        0 1px 0 0 rgba(255, 255, 255, 1) inset;
+    }
+
+    /* Accordion details marker removal */
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details summary {
+      list-style: none;
+    }
+</style>
+</head>
+<body class="min-h-screen text-tech-navy clinical-grid relative flex flex-col justify-between selection:bg-emerald-tech/20 selection:text-tech-obsidian">
+<!-- Ambient Cold Glow Accents -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[980px] h-[520px] rounded-full bg-gradient-to-b from-emerald-100/40 via-slate-200/30 to-transparent blur-[120px]"></div>
+<div class="absolute top-[38%] -right-32 w-[600px] h-[600px] rounded-full bg-emerald-100/30 blur-[130px]"></div>
+<div class="absolute bottom-10 -left-20 w-[500px] h-[500px] rounded-full bg-emerald-50/70 blur-[110px]"></div>
+</div>
+<!-- TOP CLINICAL CONTROL BAR / HEADER -->
+<header class="fixed top-4 inset-x-0 z-50 px-4 sm:px-8 max-w-[1440px] mx-auto">
+<div class="nordic-glass h-16 rounded-2xl px-6 flex items-center justify-between border border-clinical-border/80 transition-all duration-300">
+<!-- Brand Identity -->
+<a class="flex items-center gap-3.5 group focus:outline-none" href="#">
+<div class="w-9 h-9 rounded-xl bg-forest flex items-center justify-center text-white border border-emerald-800 shadow-sm group-hover:bg-emerald-deep transition-all duration-300">
+<span class="material-symbols-outlined text-emerald-300 text-[20px]">eco</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-[17px] tracking-tight text-forest group-hover:text-emerald-700 transition-colors leading-none">Добрый Доктор</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+<span class="text-[10px] uppercase tracking-[0.16em] font-semibold text-clinical-subtle mt-1">Центр превентивной медицины</span>
+</div>
+</a>
+<!-- Central Segmented Navigation -->
+<nav class="hidden lg:flex items-center gap-1 bg-surface-container/60 p-1 rounded-xl border border-clinical-border">
+<a class="px-3.5 py-1.5 text-[13px] font-semibold text-clinical-subtle hover:text-forest hover:bg-white rounded-lg transition-all" href="#">Главная</a>
+<a class="px-3.5 py-1.5 text-[13px] font-semibold text-clinical-subtle hover:text-forest hover:bg-white rounded-lg transition-all" href="#route-section">Маршрут</a>
+<a class="px-3.5 py-1.5 text-[13px] font-semibold text-clinical-subtle hover:text-forest hover:bg-white rounded-lg transition-all" href="#directions-section">Направления</a>
+<a class="px-4 py-1.5 text-[13px] font-bold text-forest bg-white rounded-lg shadow-sm border border-clinical-border flex items-center gap-2 transition-all" href="#formats-section">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span>Форматы ведения</span>
+</a>
+<a class="px-3.5 py-1.5 text-[13px] font-semibold text-clinical-subtle hover:text-forest hover:bg-white rounded-lg transition-all" href="#doctors-section">Врачи</a>
+<a class="px-3.5 py-1.5 text-[13px] font-semibold text-clinical-subtle hover:text-forest hover:bg-white rounded-lg transition-all" href="#faq-section">Вопросы</a>
+<a class="px-3.5 py-1.5 text-[13px] font-semibold text-clinical-subtle hover:text-forest hover:bg-white rounded-lg transition-all" href="#contact-section">Контакты</a>
+</nav>
+<!-- Right Telemetry & Actions -->
+<div class="flex items-center gap-4 sm:gap-6">
+<div class="hidden md:flex flex-col items-end leading-tight font-mono text-[12px]">
+<a class="font-bold text-forest hover:text-emerald-700 tracking-tight transition-colors text-[13.5px] font-sans" href="tel:+73952232303">
+          +7 (3952) 23-23-03
+        </a>
+<span class="text-[10px] text-clinical-subtle font-medium flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Ежедневно 08:00–21:00
+        </span>
+</div>
+<div class="flex items-center gap-2.5">
+<a class="relative px-5 py-2 rounded-xl bg-forest hover:bg-emerald-deep text-white text-[13px] font-bold tracking-tight shadow-sm border border-emerald-900 transition-all hover:scale-[1.01] active:scale-[0.98] flex items-center gap-2" href="#contact-section">
+<span>Записаться</span>
+<span class="material-symbols-outlined text-[16px] text-emerald-300">arrow_forward</span>
+</a>
+<a class="w-9 h-9 rounded-xl bg-white hover:bg-surface-container border border-clinical-border shadow-sm flex items-center justify-center text-forest hover:text-emerald-700 transition-all" href="#contact-section" title="Личный кабинет">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<!-- HERO SECTION -->
+<main class="relative z-10 w-full pt-28 sm:pt-32 pb-12 max-w-[1440px] mx-auto px-5 sm:px-8">
+<!-- Centered Hero Header -->
+<div class="flex flex-col items-center text-center max-w-[960px] mx-auto mb-10">
+<!-- Precision Protocol Badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border shadow-sm mb-6">
+<span class="relative flex h-2 w-2">
+<span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-700"></span>
+</span>
+<span class="text-[11.5px] font-bold tracking-wide uppercase text-forest font-mono">
+        Превентивная медицина &amp; протокол долголетия • Иркутск
+      </span>
+</div>
+<!-- Hero Title -->
+<h1 class="text-[38px] sm:text-[50px] xl:text-[60px] font-extrabold tracking-[-0.035em] text-forest leading-[1.08] mb-6">
+      Персональное медицинское сопровождение <span class="relative inline-block text-emerald-800">
+        для всей семьи
+        <svg class="absolute -bottom-1 left-0 w-full h-2 text-emerald-600/40" preserveaspectratio="none" viewbox="0 0 100 8">
+<line stroke="currentColor" stroke-dasharray="2 3" stroke-width="3" x1="0" x2="100" y1="4" y2="4"></line>
+</svg>
+</span>
+</h1>
+<!-- Subtitle -->
+<p class="text-[16px] sm:text-[18px] text-clinical-subtle leading-relaxed font-normal max-w-[760px] mb-8">
+      Семейный врач помогает разобраться с дефицитами, гормональным статусом, энергией, весом и профилактикой возрастных изменений. Биохакинг здесь не самоцель, а инструмент в руках врача.
+    </p>
+<!-- Primary Action Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10">
+<a class="px-7 py-3.5 bg-forest hover:bg-emerald-deep text-white rounded-xl text-[14px] font-bold tracking-tight shadow-sm transition-all hover:scale-[1.01] active:scale-[0.98] flex items-center gap-2.5 group" href="#formats-section">
+<span>Подобрать формат</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-300 group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+<a class="px-6 py-3.5 bg-white hover:bg-surface-container text-forest rounded-xl text-[14px] font-bold tracking-tight border border-clinical-border shadow-sm transition-all hover:scale-[1.01] active:scale-[0.98] flex items-center gap-2.5" href="#contact-section">
+<span class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+</span>
+<span>Начать с консультации</span>
+</a>
+</div>
+<!-- Telemetry Counter Strip -->
+<div class="w-full max-w-[940px] bg-white rounded-2xl border border-clinical-border shadow-sm px-6 py-4 grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-clinical-border">
+<div class="py-2 sm:py-1 px-4 flex flex-col items-center text-center">
+<span class="text-[26px] sm:text-[30px] font-extrabold tracking-tight text-forest font-mono leading-none">с 2001</span>
+<span class="text-[12px] text-clinical-subtle font-medium mt-1.5">года работает клиника</span>
+</div>
+<div class="py-2 sm:py-1 px-4 flex flex-col items-center text-center">
+<span class="text-[26px] sm:text-[30px] font-extrabold tracking-tight text-emerald-700 font-mono leading-none">30+</span>
+<span class="text-[12px] text-clinical-subtle font-medium mt-1.5">лет практики эксперта</span>
+</div>
+<div class="py-2 sm:py-1 px-4 flex flex-col items-center text-center">
+<span class="text-[26px] sm:text-[30px] font-extrabold tracking-tight text-forest font-mono leading-none">2</span>
+<span class="text-[12px] text-clinical-subtle font-medium mt-1.5">филиала в Иркутске</span>
+</div>
+<div class="py-2 sm:py-1 px-4 flex flex-col items-center text-center">
+<span class="text-[26px] sm:text-[30px] font-extrabold tracking-tight text-emerald-700 font-mono leading-none">10 000+</span>
+<span class="text-[12px] text-clinical-subtle font-medium mt-1.5">обращений ежегодно</span>
+</div>
+</div>
+</div>
+<!-- LONGEVITY ATLAS CONSOLE: Horizontal Nordic Biotech Command Panel -->
+<div class="w-full max-w-[1240px] mx-auto nordic-console rounded-3xl p-6 sm:p-8 border border-clinical-border shadow-md">
+<!-- Top Telemetry Status Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-clinical-border">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-forest text-emerald-300 flex items-center justify-center font-mono text-[14px] font-bold">
+<span class="material-symbols-outlined text-[19px]">hub</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[13px] font-extrabold tracking-wide uppercase text-forest font-mono">Карта здоровья семьи</span>
+<span class="text-[11px] text-clinical-subtle font-semibold font-mono">• Семейная архитектура</span>
+</div>
+<div class="text-[11px] text-clinical-subtle font-medium flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            Синхронизация биомаркеров в реальном времени
+          </div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 text-[11.5px] font-bold text-forest font-mono">
+<span class="material-symbols-outlined text-[14px] text-emerald-700">verified</span>
+<span>Врачебное сопровождение</span>
+</div>
+</div>
+</div>
+<!-- Center Interactive Waveform & Core Index Banner -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center my-6">
+<!-- Wave Canvas -->
+<div class="lg:col-span-8 bg-clinical-ice rounded-2xl p-4 border border-clinical-border relative overflow-hidden h-[180px] flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full opacity-40" preserveaspectratio="none" viewbox="0 0 600 160">
+<defs>
+<pattern height="20" id="tech-grid" patternunits="userSpaceOnUse" width="20">
+<path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2d5a43" stroke-opacity="0.15" stroke-width="0.75"></path>
+</pattern>
+</defs>
+<rect fill="url(#tech-grid)" height="100%" width="100%"></rect>
+<line opacity="0.3" stroke="#14422d" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="600" y1="80" y2="80"></line>
+</svg>
+<svg class="absolute inset-0 w-full h-full pointer-events-none" fill="none" preserveaspectratio="none" viewbox="0 0 600 160">
+<defs>
+<lineargradient id="emeraldWaveGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#14422d" stop-opacity="0.2"></stop>
+<stop offset="30%" stop-color="#14422d" stop-opacity="0.95"></stop>
+<stop offset="70%" stop-color="#2d5a43" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#436900" stop-opacity="0.3"></stop>
+</lineargradient>
+<lineargradient id="limeWaveGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#436900" stop-opacity="0.15"></stop>
+<stop offset="35%" stop-color="#436900" stop-opacity="0.8"></stop>
+<stop offset="65%" stop-color="#2d5a43" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#14422d" stop-opacity="0.2"></stop>
+</lineargradient>
+<radialgradient cx="50%" cy="50%" id="orbitalGlow" r="50%">
+<stop offset="0%" stop-color="#2d5a43" stop-opacity="0.18"></stop>
+<stop offset="70%" stop-color="#14422d" stop-opacity="0.05"></stop>
+<stop offset="100%" stop-color="#14422d" stop-opacity="0"></stop>
+</radialgradient>
+<filter height="140%" id="glowFilter" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="2.5"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+</defs>
+<g transform="translate(300, 80)">
+<circle cx="0" cy="0" fill="url(#orbitalGlow)" r="70"></circle>
+<g class="bio-orbital-cw">
+<ellipse cx="0" cy="0" rx="66" ry="36" stroke="#14422d" stroke-dasharray="3 5" stroke-opacity="0.35" stroke-width="1.2"></ellipse>
+<ellipse cx="0" cy="0" rx="48" ry="24" stroke="#2d5a43" stroke-dasharray="6 4" stroke-opacity="0.45" stroke-width="1.4"></ellipse>
+<circle cx="66" cy="0" fill="#2d5a43" filter="url(#glowFilter)" r="2.5"></circle>
+<circle cx="-66" cy="0" fill="#436900" r="2"></circle>
+</g>
+<g class="bio-orbital-ccw">
+<ellipse cx="0" cy="0" rx="58" ry="30" stroke="#436900" stroke-dasharray="2 4" stroke-opacity="0.3" stroke-width="1.2"></ellipse>
+<ellipse cx="0" cy="0" rx="32" ry="18" stroke="#14422d" stroke-opacity="0.25" stroke-width="1"></ellipse>
+<circle cx="0" cy="30" fill="#14422d" r="2"></circle>
+<circle cx="0" cy="-30" fill="#2d5a43" filter="url(#glowFilter)" r="2.5"></circle>
+</g>
+</g>
+<path class="bio-flow-line" d="M -10 80 Q 75 12, 160 80 T 300 80 T 440 80 T 610 80" filter="url(#glowFilter)" stroke="url(#emeraldWaveGrad)" stroke-linecap="round" stroke-width="2.6"></path>
+<path class="bio-flow-pulse" d="M -10 80 Q 75 148, 160 80 T 300 80 T 440 80 T 610 80" stroke="url(#limeWaveGrad)" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<div class="absolute left-[28%] top-[35%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="px-2.5 py-0.5 rounded-md bg-forest text-white text-[10px] font-mono font-medium shadow-sm mb-1">Индекс теломер</div>
+<div class="relative flex items-center justify-center">
+<span class="pulse-dot absolute w-4 h-4 rounded-full bg-emerald-400"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600 border border-white"></span>
+</div>
+</div>
+<div class="absolute left-[65%] top-[65%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<span class="pulse-dot absolute w-4 h-4 rounded-full bg-lime-400"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-lime-600 border border-white"></span>
+</div>
+<div class="px-2.5 py-0.5 rounded-md bg-forest text-white text-[10px] font-mono font-medium shadow-sm mt-1">Митохондрии VO₂</div>
+</div>
+</div>
+<!-- Core Index Card -->
+<div class="lg:col-span-4 bg-forest text-white rounded-2xl p-6 flex flex-col justify-between h-full border border-emerald-900 shadow-md">
+<div>
+<span class="text-[11px] uppercase font-bold tracking-widest text-emerald-200/70 font-mono">Индекс ресурсов организма</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-[44px] font-extrabold text-white tracking-tight leading-none font-mono">96.8</span>
+<span class="text-[18px] font-bold text-emerald-300 font-mono">/100</span>
+</div>
+</div>
+<div class="pt-3 border-t border-emerald-800/80 flex items-center gap-2 text-[12px] font-medium text-emerald-200">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>Оптимальный статус регенерации</span>
+</div>
+</div>
+</div>
+<!-- 6 Clinical Telemetry Badges (fully in Russian) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-2">
+<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Биологический возраст</span>
+<span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 font-extrabold text-[10px] font-mono">−6.6 лет</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-[20px] font-extrabold text-forest tracking-tight font-mono">31.4 года</span>
+<span class="text-[11.5px] text-clinical-subtle">(паспорт 38)</span>
+</div>
+<span class="text-[11px] text-emerald-800 font-medium mt-1">Омоложение клеточных систем</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Витамин D3 (25-OH)</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-[20px] font-extrabold text-forest tracking-tight font-mono">72 нг/мл</span>
+<span class="text-[11px] font-bold text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded font-mono">Оптимум</span>
+</div>
+<span class="text-[11px] text-clinical-subtle font-medium mt-1">Физиологический баланс</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Сон и восстановление</span>
+<span class="text-[12px] font-extrabold text-emerald-800 font-mono">94%</span>
+</div>
+<div class="mt-2 flex items-center justify-between">
+<span class="text-[13px] font-bold text-forest">Глубокая фаза</span>
+<svg class="w-24 h-4 text-emerald-700" fill="none" viewbox="0 0 80 16">
+<path d="M0,8 Q10,0 20,8 T40,8 T60,2 T70,14 T80,8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-[11px] text-clinical-subtle font-medium mt-1">Нейро-вегетативная стабильность</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Гормональный статус</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-[13px] font-bold text-forest">Кортизол утро:</span>
+<span class="text-[12px] font-bold text-emerald-800 font-mono">норма</span>
+</div>
+<span class="text-[11px] text-clinical-subtle font-medium mt-1">Индекс стресса: низкий</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Метаболический статус</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-[20px] font-extrabold text-forest tracking-tight font-mono">HOMA-IR 1.1</span>
+</div>
+<span class="text-[11px] text-emerald-800 font-medium mt-1">Гликемическая стабильность</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Маркеры воспаления</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+<div class="mt-2 flex items-baseline gap-1.5">
+<span class="text-[20px] font-extrabold text-forest tracking-tight font-mono">hs-CRP 0.3</span>
+<span class="text-[11px] text-clinical-subtle font-mono">мг/л</span>
+</div>
+<span class="text-[11px] text-emerald-800 font-medium mt-1">Минимальный системный риск</span>
+</div>
+</div>
+</div>
+<!-- Scroll Anchor -->
+<a class="flex flex-col items-center justify-center gap-1.5 pt-10 text-clinical-subtle hover:text-forest transition-colors cursor-pointer group" href="#route-section">
+<span class="text-[11px] uppercase font-bold tracking-widest font-mono group-hover:tracking-[0.16em] transition-all">Изучить медицинский маршрут</span>
+<span class="material-symbols-outlined text-[18px] animate-bounce" style="animation-duration: 2.2s;">keyboard_arrow_down</span>
+</a>
+</main>
+<!-- SECTION 1: КАК УСТРОЕН МЕДИЦИНСКИЙ МАРШРУТ (Этапы 01-06) -->
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 border-t border-clinical-border bg-white text-forest" id="route-section">
+<div class="max-w-[1440px] mx-auto">
+<div class="flex flex-col items-start max-w-[780px] mb-12">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-clinical-ice border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">Медицинский процесс</span>
+</div>
+<h2 class="text-[32px] sm:text-[42px] font-extrabold tracking-tight text-forest leading-[1.15] mb-4">
+      Как устроен медицинский маршрут
+    </h2>
+<p class="text-[16px] text-clinical-subtle leading-relaxed font-normal">
+      Поэтапная система ведения: от первичного сбора анамнеза до долгосрочного мониторинга биомаркеров всей семьи.
+    </p>
+</div>
+<!-- Route Pipeline Cards (01-06) with Soft Connected Line -->
+<div class="relative">
+<!-- Desktop Connecting Track -->
+<div class="hidden lg:block absolute top-[52px] left-[4%] right-[4%] h-1 bg-surface-container rounded-full z-0">
+<div class="h-full bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-800 rounded-full w-4/5"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+<!-- 01 Консультация -->
+<div class="bg-surface-container-low p-6 rounded-2xl border border-clinical-border flex flex-col justify-between hover:border-emerald-700/60 transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-11 h-11 rounded-xl bg-forest text-white flex items-center justify-center font-mono font-bold text-[14px] shadow-sm">
+              01
+            </div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Старт</span>
+</div>
+<h3 class="text-[18px] font-bold text-forest mb-2">Консультация</h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed">
+            Разбираем жалобы, анамнез, цели, образ жизни и состав семьи. Определяем фокус и первичные медицинские приоритеты.
+          </p>
+</div>
+<div class="mt-5 pt-3 border-t border-clinical-border/80 flex items-center gap-1.5 text-[12px] font-semibold text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">stethoscope</span>
+<span>Врач интегративной медицины</span>
+</div>
+</div>
+<!-- 02 Персональная диагностика -->
+<div class="bg-surface-container-low p-6 rounded-2xl border border-clinical-border flex flex-col justify-between hover:border-emerald-700/60 transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-11 h-11 rounded-xl bg-forest text-white flex items-center justify-center font-mono font-bold text-[14px] shadow-sm">
+              02
+            </div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Анализы</span>
+</div>
+<h3 class="text-[18px] font-bold text-forest mb-2">Персональная диагностика</h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed">
+            Подбираем анализы и обследования строго под возраст, индивидуальные риски и поставленные задачи — без лишних назначений.
+          </p>
+</div>
+<div class="mt-5 pt-3 border-t border-clinical-border/80 flex items-center gap-1.5 text-[12px] font-semibold text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">biotech</span>
+<span>Таргетный лабораторный профиль</span>
+</div>
+</div>
+<!-- 03 Врачебная расшифровка -->
+<div class="bg-surface-container-low p-6 rounded-2xl border border-clinical-border flex flex-col justify-between hover:border-emerald-700/60 transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-11 h-11 rounded-xl bg-forest text-white flex items-center justify-center font-mono font-bold text-[14px] shadow-sm">
+              03
+            </div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Аналитика</span>
+</div>
+<h3 class="text-[18px] font-bold text-forest mb-2">Врачебная расшифровка</h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed">
+            Объясняем результаты простым языком: что важно, что требует контроля, а что находится в норме и можно не трогать.
+          </p>
+</div>
+<div class="mt-5 pt-3 border-t border-clinical-border/80 flex items-center gap-1.5 text-[12px] font-semibold text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">clarify</span>
+<span>Понятный отчет без терминологии</span>
+</div>
+</div>
+<!-- 04 План коррекции -->
+<div class="bg-surface-container-low p-6 rounded-2xl border border-clinical-border flex flex-col justify-between hover:border-emerald-700/60 transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-11 h-11 rounded-xl bg-forest text-white flex items-center justify-center font-mono font-bold text-[14px] shadow-sm">
+              04
+            </div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Протокол</span>
+</div>
+<h3 class="text-[18px] font-bold text-forest mb-2">План коррекции</h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed">
+            Питание, сон, нагрузка, дефициты, нутрицевтики, при необходимости — коррекция гормонального статуса и углубленные обследования.
+          </p>
+</div>
+<div class="mt-5 pt-3 border-t border-clinical-border/80 flex items-center gap-1.5 text-[12px] font-semibold text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Персональная дорожная карта</span>
+</div>
+</div>
+<!-- 05 Сопровождение -->
+<div class="bg-surface-container-low p-6 rounded-2xl border border-clinical-border flex flex-col justify-between hover:border-emerald-700/60 transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-11 h-11 rounded-xl bg-forest text-white flex items-center justify-center font-mono font-bold text-[14px] shadow-sm">
+              05
+            </div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Курация</span>
+</div>
+<h3 class="text-[18px] font-bold text-forest mb-2">Сопровождение</h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed">
+            Контроль выполнения рекомендаций, постоянная связь с семейным врачом, своевременная корректировка дозировок и тактики.
+          </p>
+</div>
+<div class="mt-5 pt-3 border-t border-clinical-border/80 flex items-center gap-1.5 text-[12px] font-semibold text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>Врач на связи</span>
+</div>
+</div>
+<!-- 06 Повторный контроль -->
+<div class="bg-surface-container-low p-6 rounded-2xl border border-clinical-border flex flex-col justify-between hover:border-emerald-700/60 transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-11 h-11 rounded-xl bg-forest text-white flex items-center justify-center font-mono font-bold text-[14px] shadow-sm">
+              06
+            </div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2.5 py-1 rounded-md">Результат</span>
+</div>
+<h3 class="text-[18px] font-bold text-forest mb-2">Повторный контроль</h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed">
+            Оцениваем клиническую и лабораторную динамику, закрепляем результат и обновляем маршрут на следующий период.
+          </p>
+</div>
+<div class="mt-5 pt-3 border-t border-clinical-border/80 flex items-center gap-1.5 text-[12px] font-semibold text-emerald-800">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>Измеримый прирост ресурса</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ПОЧЕМУ НЕ ПРОСТО СДАТЬ АНАЛИЗЫ -->
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/60 border-t border-clinical-border">
+<div class="max-w-[1440px] mx-auto">
+<div class="max-w-[800px] mb-12">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">Клинический смысл</span>
+</div>
+<h2 class="text-[32px] sm:text-[42px] font-extrabold tracking-tight text-forest leading-[1.15]">
+      Почему не просто сдать анализы?
+    </h2>
+<p class="text-[16px] text-clinical-subtle mt-3">
+      Разница между хаотичными тестами и последовательной работой с врачом.
+    </p>
+</div>
+<!-- 2-Column Comparison Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+<!-- Самостоятельно (Минусы) -->
+<div class="bg-white rounded-3xl p-7 sm:p-8 border border-red-200 shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between pb-5 border-b border-slate-100">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</div>
+<div>
+<h3 class="text-[19px] font-extrabold text-slate-800">Самостоятельно</h3>
+<span class="text-[12px] text-slate-500">Без медицинского куратора</span>
+</div>
+</div>
+<span class="text-[11px] font-mono text-red-600 font-bold uppercase bg-red-50 px-2.5 py-1 rounded">Высокий риск</span>
+</div>
+<ul class="mt-6 space-y-4 text-[14.5px] text-slate-700">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 text-[18px] shrink-0 mt-0.5">cancel</span>
+<span><strong>Сдать случайный набор анализов</strong> из рекламы или соцсетей, упустив скрытые первопричины.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 text-[18px] shrink-0 mt-0.5">cancel</span>
+<span><strong>Получить сухие цифры без интерпретации:</strong> попадание в «референс» не означает оптимальное здоровье.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 text-[18px] shrink-0 mt-0.5">cancel</span>
+<span><strong>Купить добавки по советам из интернета:</strong> трата бюджета на несовместимые или ненужные формы.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 text-[18px] shrink-0 mt-0.5">cancel</span>
+<span><strong>Не понимать, что контролировать дальше</strong> и как со временем меняется биохимический профиль.</span>
+</li>
+</ul>
+</div>
+<!-- С врачом (Плюсы) -->
+<div class="bg-white rounded-3xl p-7 sm:p-8 border-2 border-emerald-700/60 shadow-md relative overflow-hidden">
+<div class="flex items-center justify-between pb-5 border-b border-emerald-100">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+<div>
+<h3 class="text-[19px] font-extrabold text-forest">С врачом</h3>
+<span class="text-[12px] text-emerald-800">Доказательная медицина</span>
+</div>
+</div>
+<span class="text-[11px] font-mono text-emerald-800 font-bold uppercase bg-emerald-100 px-2.5 py-1 rounded">Системный подход</span>
+</div>
+<ul class="mt-6 space-y-4 text-[14.5px] text-forest">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span><strong>Диагностика под конкретную задачу:</strong> точный набор маркеров без гипердиагностики и переплат.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span><strong>Расшифровка в контексте:</strong> оценка с учетом возраста, генетических рисков, жалоб и ритма жизни.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span><strong>Персональный план:</strong> коррекция сна, питания, дефицитов и гормонального баланса сертифицированными методами.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span><strong>Контроль динамики:</strong> регулярная калибровка протокола и долгосрочная безопасность систем организма.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Accent Quote Banner -->
+<div class="bg-forest text-white rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-emerald-300">
+<span class="material-symbols-outlined text-[28px]">format_quote</span>
+</div>
+<div>
+<p class="text-[18px] sm:text-[21px] font-bold tracking-tight text-white">
+          «Лаборатория дает цифры. Врач превращает их в медицинский маршрут.»
+        </p>
+<span class="text-[13px] text-emerald-200/80 mt-1 block">Клинический принцип центра превентивной медицины «Добрый Доктор»</span>
+</div>
+</div>
+<a class="shrink-0 px-6 py-3 rounded-xl bg-white text-forest hover:bg-emerald-50 text-[13.5px] font-bold transition-all" href="#formats-section">
+      Подобрать формат
+    </a>
+</div>
+</div>
+</section>
+<!-- DIRECTIONS SECTION (Existing 6 Cards preserved with photos & Russian badges) -->
+<section class="relative z-10 w-full py-24 px-5 sm:px-8 border-t border-clinical-border bg-white text-forest" id="directions-section">
+<div class="max-w-[1440px] mx-auto">
+<!-- Header Block -->
+<div class="flex flex-col items-start max-w-[760px] mb-14">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-clinical-ice border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">С чем работаем</span>
+</div>
+<h2 class="text-[34px] sm:text-[44px] font-extrabold tracking-tight text-forest leading-[1.12] mb-4">
+        Направления интегративного сопровождения
+      </h2>
+<p class="text-[16px] sm:text-[17.5px] text-clinical-subtle leading-relaxed font-normal">
+        Работа начинается с запроса пациента: подготовка к беременности, гормоны, энергия, дефициты, вес или профилактика возрастных изменений.
+      </p>
+</div>
+<!-- 6 Comprehensive Direction Cards in 3-Column / 2-Row Structured Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 01. Подготовка к беременности -->
+<div class="group rounded-2xl bg-white border border-clinical-border hover:border-emerald-700/60 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300">
+<div>
+<!-- Image Frame with Floating Glass Widget -->
+<div class="relative h-[220px] w-full rounded-xl overflow-hidden mb-5 bg-slate-100">
+<img alt="Подготовка к беременности и фертильность пары" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJba5p9oYzYycWqVhtpSXKAR9PGX7Z7bo-fM2xoZfeDcay18V3cd1nbyFuzdo93TZnP00yuEOIoKwS3uKAl_jForZEY4Wi1e40Ba96ivfumUfxc1da17ncV7v86oLPDmUwDY80-GSJSdc9u87pUvoCL1d8ctTQq-xdz1JBJH8640LjyA5u63KG8ifOBaGfZ7t05fW_kCiB9eUaBOpfsXqKfSzZTZOf0YSGLNwcrDxz6p7xt79Ov3a8yA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
+<!-- Top Category & Number Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-forest bg-white/95 backdrop-blur-md shadow-sm font-mono">репродукция</span>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-white bg-black/45 backdrop-blur-md">01</span>
+</div>
+<!-- Floating Frosted Glass Biomarker Status Widget -->
+<div class="absolute bottom-3 inset-x-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/70 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="relative flex h-2 w-2 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="text-[11.5px] font-bold text-forest truncate">Фертильность пары</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100/90 text-emerald-900 text-[10.5px] font-bold font-mono whitespace-nowrap">Оптимум 98%</span>
+</div>
+<div class="text-[10px] text-clinical-subtle mt-1 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px] text-emerald-700">check_circle</span>
+                Готовность клеточных систем к зачатию
+              </div>
+</div>
+</div>
+<!-- Content Details -->
+<h3 class="text-[19px] font-bold text-forest mb-2 group-hover:text-emerald-800 transition-colors">
+            Подготовка к беременности
+          </h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed mb-5">
+            Разбор дефицитов у обоих партнеров, фертильности, семейных рисков и базовой подготовки до зачатия.
+          </p>
+</div>
+<a class="flex items-center justify-between pt-3.5 border-t border-slate-100 text-[13px] font-bold text-forest group-hover:text-emerald-800 transition-colors" href="#contact-section">
+<span>Обсудить на консультации</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- 02. Гормональный статус -->
+<div class="group rounded-2xl bg-white border border-clinical-border hover:border-emerald-700/60 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300">
+<div>
+<!-- Image Frame with Floating Glass Widget -->
+<div class="relative h-[220px] w-full rounded-xl overflow-hidden mb-5 bg-slate-100">
+<img alt="Гормональный статус и эндокринный баланс" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUIjNc0V90Q6oih0DFSt9ogEnOPclpz5-YxhZHJXtvRryG0QzrZFRktYbRVGcOmmUl3bywBCSx1y5Y8AzDWfdJJfPCjSqxqXCh4Rj27Mt8Gx8p85UbzT7OFuvdMqAL3Swu2wU8FCHYRTA-BQSjbVtI7r56e2UYeDPZo8r6YjI9yu6iYcibWjLf1-d4ujckUygReBrh_HfcXRVMheWdPpvyx-u5CzbjDPJpl_5tsTzmfM9-gYyRl5EoRA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
+<!-- Top Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-forest bg-white/95 backdrop-blur-md shadow-sm font-mono">эндокринология</span>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-white bg-black/45 backdrop-blur-md">02</span>
+</div>
+<!-- Floating Frosted Glass Biomarker Status Widget -->
+<div class="absolute bottom-3 inset-x-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/70 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="relative flex h-2 w-2 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="text-[11.5px] font-bold text-forest truncate">Баланс кортизола</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100/90 text-emerald-900 text-[10.5px] font-bold font-mono whitespace-nowrap">Норма</span>
+</div>
+<div class="text-[10px] text-clinical-subtle mt-1 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px] text-emerald-700">schedule</span>
+                Синхронизация суточных циркадных ритмов
+              </div>
+</div>
+</div>
+<!-- Content Details -->
+<h3 class="text-[19px] font-bold text-forest mb-2 group-hover:text-emerald-800 transition-colors">
+            Гормональный статус
+          </h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed mb-5">
+            Щитовидная железа, половые гормоны, возрастные изменения и симптомы, которые требуют врачебной оценки.
+          </p>
+</div>
+<a class="flex items-center justify-between pt-3.5 border-t border-slate-100 text-[13px] font-bold text-forest group-hover:text-emerald-800 transition-colors" href="#contact-section">
+<span>Обсудить на консультации</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- 03. Энергия и восстановление -->
+<div class="group rounded-2xl bg-white border border-clinical-border hover:border-emerald-700/60 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300">
+<div>
+<!-- Image Frame with Floating Glass Widget -->
+<div class="relative h-[220px] w-full rounded-xl overflow-hidden mb-5 bg-slate-100">
+<img alt="Энергия и восстановление биоресурса" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQXEpM-VB45zTq-V7xDdPRhQggAJv3NlIeYwg0Ns7Ts79UL-Fd3aItNkpBKuVXautC-kw1w0fMdSYP1NOMMuw8_wdNC190bDm178uYL7-GK87GsA-DsQvfL6dSgub0mBafBZK-gFPiYB1BOiJv5KSevVyd9Rp6KQ1S4UgooiJoTMr-tX6t-VPPUrulrSum-77HmCaZXchlYuJKhyqI3nkw-uE1K-WgsV8CMX0OCP0I2zARyIlwcDet0w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
+<!-- Top Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-forest bg-white/95 backdrop-blur-md shadow-sm font-mono">ресурс</span>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-white bg-black/45 backdrop-blur-md">03</span>
+</div>
+<!-- Floating Frosted Glass Biomarker Status Widget -->
+<div class="absolute bottom-3 inset-x-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/70 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="relative flex h-2 w-2 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="text-[11.5px] font-bold text-forest truncate">HRV &amp; Сон</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100/90 text-emerald-900 text-[10.5px] font-bold font-mono whitespace-nowrap">Ресурс 94%</span>
+</div>
+<div class="text-[10px] text-clinical-subtle mt-1 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px] text-emerald-700">bolt</span>
+                Восстановление вегетативной нервной системы
+              </div>
+</div>
+</div>
+<!-- Content Details -->
+<h3 class="text-[19px] font-bold text-forest mb-2 group-hover:text-emerald-800 transition-colors">
+            Энергия и восстановление
+          </h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed mb-5">
+            Хроническая усталость, сон, работоспособность, стресс и поиск причин сниженного ресурса без самолечения.
+          </p>
+</div>
+<a class="flex items-center justify-between pt-3.5 border-t border-slate-100 text-[13px] font-bold text-forest group-hover:text-emerald-800 transition-colors" href="#contact-section">
+<span>Обсудить на консультации</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- 04. Питание и дефициты -->
+<div class="group rounded-2xl bg-white border border-clinical-border hover:border-emerald-700/60 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300">
+<div>
+<!-- Image Frame with Floating Glass Widget -->
+<div class="relative h-[220px] w-full rounded-xl overflow-hidden mb-5 bg-slate-100">
+<img alt="Питание и компенсация нутриентных дефицитов" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJOsKVDtI6afFLoZNou1SRJT4IlvralffkK-G5mQ7yyVK2MenUwPCQKvEXQfLLEAyuobJw-VVMKCUmRIvh64QM6LkIF-RwCzFJjcCdYqDNOcMptX6dRj4OvDcs273vR4iGA9PhfIWYKU88yQuHZySGksspw-XnWcaulwxGBp9zNLAQsFypK0C7oSYcOidrf0BUKP_j4upEtSQHy6slFNQH0uXWYx0zrj1TYmDJzXyQ1uTRsvDms8Q4iw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
+<!-- Top Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-forest bg-white/95 backdrop-blur-md shadow-sm font-mono">микронутриенты</span>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-white bg-black/45 backdrop-blur-md">04</span>
+</div>
+<!-- Floating Frosted Glass Biomarker Status Widget -->
+<div class="absolute bottom-3 inset-x-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/70 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="relative flex h-2 w-2 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="text-[11.5px] font-bold text-forest truncate">Нутриенты</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100/90 text-emerald-900 text-[10.5px] font-bold font-mono whitespace-nowrap">D3, Fe, Mg в норме</span>
+</div>
+<div class="text-[10px] text-clinical-subtle mt-1 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px] text-emerald-700">nutrition</span>
+                Персональный рацион под биохимию крови
+              </div>
+</div>
+</div>
+<!-- Content Details -->
+<h3 class="text-[19px] font-bold text-forest mb-2 group-hover:text-emerald-800 transition-colors">
+            Питание и дефициты
+          </h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed mb-5">
+            Железо, витамин D, омега-3, минералы и питание под анализы, жалобы и реальный режим пациента.
+          </p>
+</div>
+<a class="flex items-center justify-between pt-3.5 border-t border-slate-100 text-[13px] font-bold text-forest group-hover:text-emerald-800 transition-colors" href="#contact-section">
+<span>Обсудить на консультации</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- 05. Вес и метаболизм -->
+<div class="group rounded-2xl bg-white border border-clinical-border hover:border-emerald-700/60 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300">
+<div>
+<!-- Image Frame with Floating Glass Widget -->
+<div class="relative h-[220px] w-full rounded-xl overflow-hidden mb-5 bg-slate-100">
+<img alt="Вес и метаболическое здоровье" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdW-ja7JiC2UV24hI5G_g6yx7pADgQ68-hnxFjfQOWAHUutKHgWOjj359FdWP7qeH9Q7qIf8msyqnWmYk0xKtgsy693zs76Utdt6GB0NGSLB1PNw7OssKF8HFPoNnTqZMx3h4IX9nLeXKsynK9ofFp0HLIQ3uHfZ5PGkC8TvFXwb2t4RMw3gXmT9vCHWu8Dg8_7z0-e9XXSBMtD7ZOXyZdi_O9JIqds6a4_uTheQjjKj4hBVwXtX0xgg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
+<!-- Top Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-forest bg-white/95 backdrop-blur-md shadow-sm font-mono">метаболизм</span>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-white bg-black/45 backdrop-blur-md">05</span>
+</div>
+<!-- Floating Frosted Glass Biomarker Status Widget -->
+<div class="absolute bottom-3 inset-x-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/70 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="relative flex h-2 w-2 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="text-[11.5px] font-bold text-forest truncate">HOMA-IR 1.1</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100/90 text-emerald-900 text-[10.5px] font-bold font-mono whitespace-nowrap">Метаболическая гибкость</span>
+</div>
+<div class="text-[10px] text-clinical-subtle mt-1 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px] text-emerald-700">monitoring</span>
+                Стабильный гликемический статус без срывов
+              </div>
+</div>
+</div>
+<!-- Content Details -->
+<h3 class="text-[19px] font-bold text-forest mb-2 group-hover:text-emerald-800 transition-colors">
+            Вес и метаболизм
+          </h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed mb-5">
+            Метаболический подход к снижению веса: без голодовок, опасных схем и обещаний быстрого результата.
+          </p>
+</div>
+<a class="flex items-center justify-between pt-3.5 border-t border-slate-100 text-[13px] font-bold text-forest group-hover:text-emerald-800 transition-colors" href="#contact-section">
+<span>Обсудить на консультации</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- 06. Anti-age и долголетие -->
+<div class="group rounded-2xl bg-white border border-clinical-border hover:border-emerald-700/60 p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-lg transition-all duration-300">
+<div>
+<!-- Image Frame with Floating Glass Widget -->
+<div class="relative h-[220px] w-full rounded-xl overflow-hidden mb-5 bg-slate-100">
+<img alt="Anti-age превентивная медицина и долголетие" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM-GlWYWILvFc8mU9sLAXO6dthuTayZd7sJWD4ppV_6yNuzCNeUQgvkxo3YeZ5g-U5zsoUPAsrcblNAfNi8v_ObwsxM9x3W440DxBO0uqmocN0SfZ4hTCTDQS6qUNIPvn02CUy3ixsPAceRF-CIhezdrg5dr1ZWrZVB6O-gGHsQRNc9JCpypdZZRs7vwg4KE31jEfVFVwIxxrIcTRphOAU-EsZ9UH5ETb0qy8y1Ggx9bCTa2eMyu9Wmw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
+<!-- Top Badges -->
+<div class="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none">
+<span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-forest bg-white/95 backdrop-blur-md shadow-sm font-mono">35+</span>
+<span class="px-2 py-0.5 rounded-md text-[11px] font-mono font-bold text-white bg-black/45 backdrop-blur-md">06</span>
+</div>
+<!-- Floating Frosted Glass Biomarker Status Widget -->
+<div class="absolute bottom-3 inset-x-3 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/70 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="relative flex h-2 w-2 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="text-[11.5px] font-bold text-forest truncate">Биологический возраст</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100/90 text-emerald-900 text-[10.5px] font-bold font-mono whitespace-nowrap">−6.4 года</span>
+</div>
+<div class="text-[10px] text-clinical-subtle mt-1 font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[12px] text-emerald-700">health_and_safety</span>
+                Активное клеточное обновление и тонус сосудов
+              </div>
+</div>
+</div>
+<!-- Content Details -->
+<h3 class="text-[19px] font-bold text-forest mb-2 group-hover:text-emerald-800 transition-colors">
+            Anti-age и долголетие
+          </h3>
+<p class="text-[13.5px] text-clinical-subtle leading-relaxed mb-5">
+            Превентивный контроль возрастных изменений, когнитивного здоровья, сосудистых рисков и качества жизни.
+          </p>
+</div>
+<a class="flex items-center justify-between pt-3.5 border-t border-slate-100 text-[13px] font-bold text-forest group-hover:text-emerald-800 transition-colors" href="#contact-section">
+<span>Обсудить на консультации</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- DOCTORS & CLINICAL EXPERTISE SECTION (Preserving image 15) -->
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/80 border-t border-clinical-border" id="doctors-section">
+<div class="max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Portrait Frame -->
+<div class="lg:col-span-6 relative">
+<div class="relative rounded-3xl overflow-hidden border border-clinical-border shadow-xl bg-white">
+<img alt="Врачебный консилиум клиники Добрый Доктор" class="w-full h-[460px] object-cover object-center" src="https://lh3.googleusercontent.com/aida/AEtjO1XcPElDwc1F-yM7zYvC9AZDpsN76kwN__ta-SjPYu-0SDvX3Bm5RtW63npk8vorhBLkfi9yM5FK0QPcFQB8viIacPanhKWgBCyJr_rJM1jS1Iy3xIkeU9JCt78vIxuUo_yijNUocAX1mx5-KAsJYu_9LpC2Vp4a_hVOWa-5bfeA4H1xxW8T5JNStye__7H8lr14N79SH-8VRO0leDHeayg7hLsKnoPxzjrSEq0uv_ptqSxQgEBZJqNLLUq8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-tech-obsidian/85 via-tech-obsidian/20 to-transparent"></div>
+<div class="absolute bottom-6 inset-x-6 text-white">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-600/90 backdrop-blur-md text-white text-[11px] font-mono font-bold uppercase mb-2">
+              Врачебный консилиум
+            </div>
+<h4 class="text-[22px] font-extrabold tracking-tight">Ведущие превентивные терапевты и эндокринологи</h4>
+<p class="text-[13px] text-slate-200 mt-1">Опыт комплексного ведения пациентов более 30 лет. Никаких шаблонных протоколов.</p>
+</div>
+</div>
+</div>
+<!-- Text & Trust Matrix -->
+<div class="lg:col-span-6 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border w-max mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-bold tracking-wider uppercase text-forest font-mono">Доказательная база</span>
+</div>
+<h2 class="text-[32px] sm:text-[40px] font-extrabold tracking-tight text-forest leading-[1.15] mb-4">
+          Команда врачей, которая смотрит на организм как на единую систему
+        </h2>
+<p class="text-[15.5px] text-clinical-subtle leading-relaxed mb-8">
+          В клинике «Добрый Доктор» каждый протокол создается на стыке глубокой биохимической лабораторной диагностики, функциональных тестов и доказательных клинических рекомендаций.
+        </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-white p-4 rounded-xl border border-clinical-border">
+<span class="material-symbols-outlined text-emerald-700 text-[26px]">vital_signs</span>
+<h5 class="text-[15px] font-bold text-forest mt-2 mb-1">Глубокая диагностика</h5>
+<p class="text-[12.5px] text-clinical-subtle">Более 140 биомаркеров метаболизма, гормонов и клеточного старения.</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-clinical-border">
+<span class="material-symbols-outlined text-emerald-700 text-[26px]">handshake</span>
+<h5 class="text-[15px] font-bold text-forest mt-2 mb-1">Врач на связи</h5>
+<p class="text-[12.5px] text-clinical-subtle">Постоянный мониторинг динамики и оперативная корректировка назначений.</p>
+</div>
+</div>
+<div class="mt-8">
+<a class="px-7 py-3.5 bg-forest hover:bg-emerald-deep text-white rounded-xl text-[14px] font-bold tracking-tight shadow-sm transition-all hover:scale-[1.01] active:scale-[0.98] inline-flex items-center gap-2.5" href="#contact-section">
+<span>Записаться на консилиум</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-300">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: ИНТЕРАКТИВНЫЙ ПОДБОР ФОРМАТА СОПРОВОЖДЕНИЯ (Без цен) -->
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-white border-t border-clinical-border" id="formats-section">
+<div class="max-w-[1440px] mx-auto">
+<div class="max-w-[780px] mb-12">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-clinical-ice border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">Индивидуальный подбор</span>
+</div>
+<h2 class="text-[32px] sm:text-[42px] font-extrabold tracking-tight text-forest leading-[1.15] mb-4">
+      Подбор формата сопровождения
+    </h2>
+<p class="text-[16px] text-clinical-subtle">
+      Отметьте ваши параметры — интеллектуальный модуль подскажет наиболее подходящий формат медицинской курации.
+    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Interactive Quiz / Selector Form -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-3xl p-6 sm:p-8 border border-clinical-border space-y-7" id="quiz-container">
+<!-- Question 1: Для кого -->
+<div>
+<label class="block text-[13px] font-mono font-bold uppercase tracking-wider text-forest mb-3">
+          1. Для кого подбирается ведение?
+        </label>
+<div class="flex flex-wrap gap-2.5" id="group-who">
+<button class="quiz-chip-who px-4 py-2 rounded-xl text-[13px] font-bold border transition-all bg-white border-clinical-border text-forest hover:border-emerald-600" data-value="me" type="button">
+            Для меня
+          </button>
+<button class="quiz-chip-who px-4 py-2 rounded-xl text-[13px] font-bold border transition-all bg-white border-clinical-border text-forest hover:border-emerald-600" data-value="couple" type="button">
+            Супруг(а)
+          </button>
+<button class="quiz-chip-who px-4 py-2 rounded-xl text-[13px] font-bold border transition-all bg-white border-clinical-border text-forest hover:border-emerald-600" data-value="child" type="button">
+            Ребенок
+          </button>
+<button class="quiz-chip-who px-4 py-2 rounded-xl text-[13px] font-bold border transition-all bg-white border-clinical-border text-forest hover:border-emerald-600" data-value="parents" type="button">
+            Родители
+          </button>
+<button class="quiz-chip-who active-chip px-4 py-2 rounded-xl text-[13px] font-bold border transition-all bg-forest text-white border-forest shadow-sm" data-value="family" type="button">
+            Вся семья
+          </button>
+</div>
+</div>
+<!-- Question 2: Основной запрос -->
+<div>
+<label class="block text-[13px] font-mono font-bold uppercase tracking-wider text-forest mb-3">
+          2. Основной медицинский запрос
+        </label>
+<div class="flex flex-wrap gap-2" id="group-need">
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="energy" type="button">
+            Энергия и тонус
+          </button>
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="sleep" type="button">
+            Сон и стресс
+          </button>
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="weight" type="button">
+            Вес и метаболизм
+          </button>
+<button class="quiz-chip-need active-chip px-3.5 py-1.5 rounded-lg text-[12.5px] font-bold border bg-forest text-white border-forest shadow-sm transition-all" data-value="hormones" type="button">
+            Гормональный баланс
+          </button>
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="fertility" type="button">
+            Беременность
+          </button>
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="sport" type="button">
+            Спорт и восстановление
+          </button>
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="age" type="button">
+            45+ долголетие
+          </button>
+<button class="quiz-chip-need px-3.5 py-1.5 rounded-lg text-[12.5px] font-medium border bg-white border-clinical-border text-forest hover:border-emerald-600 transition-all" data-value="seniors" type="button">
+            Пожилые родственники
+          </button>
+</div>
+</div>
+<!-- Question 3: Связь с врачом -->
+<div class="pt-2">
+<label class="block text-[13px] font-mono font-bold uppercase tracking-wider text-forest mb-3">
+          3. Требуется ли регулярная связь с врачом в чате?
+        </label>
+<div class="inline-flex p-1 bg-white rounded-xl border border-clinical-border">
+<button class="px-5 py-2 rounded-lg text-[13px] font-bold bg-forest text-white transition-all" id="btn-chat-yes" type="button">
+            Да, постоянный контакт
+          </button>
+<button class="px-5 py-2 rounded-lg text-[13px] font-semibold text-clinical-subtle hover:text-forest transition-all" id="btn-chat-no" type="button">
+            Только плановые визиты
+          </button>
+</div>
+</div>
+</div>
+<!-- Result Display Card (Dynamic) -->
+<div class="lg:col-span-5 bg-forest text-white rounded-3xl p-7 sm:p-8 border border-emerald-900 shadow-xl flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-emerald-800">
+<span class="text-[11px] uppercase tracking-widest font-mono text-emerald-300 font-bold">Медицинская рекомендация</span>
+<span class="px-2.5 py-0.5 rounded-md bg-emerald-800 text-emerald-200 text-[11px] font-mono font-bold">Оптимум</span>
+</div>
+<div class="mt-6">
+<span class="text-[13px] text-emerald-200 block mb-1">Предварительно вам подойдет формат:</span>
+<h3 class="text-[28px] sm:text-[32px] font-extrabold text-white tracking-tight" id="recommendation-format">
+            Premium (Расширенный)
+          </h3>
+<p class="text-[14px] text-slate-200 leading-relaxed mt-3" id="recommendation-desc">
+            Глубокая работа с гормональным фоном, вегетативной системой, дефицитами и постоянная связь с семейным доктором для синхронизации показателей.
+          </p>
+</div>
+<div class="mt-6 p-4 rounded-xl bg-emerald-900/60 border border-emerald-800 text-[12.5px] text-emerald-200/90 leading-snug flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-emerald-400 shrink-0 mt-0.5">info</span>
+<span>Точный формат и наполнение программы врач предложит после первой консультации и сбора анамнеза.</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-emerald-800">
+<a class="w-full py-3.5 px-6 rounded-xl bg-white hover:bg-emerald-50 text-forest text-[14px] font-bold tracking-tight text-center transition-all flex items-center justify-center gap-2 group active:scale-[0.98]" href="#contact-section">
+<span>Обсудить этот формат с врачом</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: УРОВНИ СОПРОВОЖДЕНИЯ (3 карточки без цен) -->
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/50 border-t border-clinical-border">
+<div class="max-w-[1440px] mx-auto">
+<div class="text-center max-w-[760px] mx-auto mb-14">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">Программы курации</span>
+</div>
+<h2 class="text-[32px] sm:text-[42px] font-extrabold tracking-tight text-forest leading-[1.15] mb-4">
+      Уровни медицинского сопровождения
+    </h2>
+<p class="text-[16px] text-clinical-subtle">
+      Прозрачная структура ведения без навязанных услуг. Каждый уровень адаптируется под персональные задачи пациента.
+    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-7 items-stretch">
+<!-- Format 1: Basic -->
+<div class="bg-white rounded-3xl p-7 border border-clinical-border flex flex-col justify-between shadow-sm hover:border-emerald-700/60 transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-[12px] font-mono font-bold uppercase text-clinical-subtle bg-surface-container px-2.5 py-1 rounded">Формат 01</span>
+<span class="text-[11px] font-mono font-semibold text-clinical-subtle">Профилактика</span>
+</div>
+<h3 class="text-[24px] font-extrabold text-forest mb-2">Basic</h3>
+<p class="text-[13.5px] text-clinical-subtle mb-6">
+          Плановый контроль здоровья, регулярный мониторинг ключевых дефицитов и базовые профилактические чек-апы.
+        </p>
+<ul class="space-y-3 text-[13.5px] text-forest mb-8">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Первичная углубленная консультация терапевта</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Базовый лабораторный профиль (дефициты, воспаление)</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Персональный нутрицевтический протокол</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Плановый контроль динамики через 3 месяца</span>
+</li>
+</ul>
+</div>
+<a class="w-full py-3 rounded-xl border-2 border-forest text-forest hover:bg-forest hover:text-white text-[13.5px] font-bold text-center transition-all active:scale-[0.98]" href="#contact-section">
+        Обсудить формат на консультации
+      </a>
+</div>
+<!-- Format 2: Premium (Рекомендуемый) -->
+<div class="bg-white rounded-3xl p-7 border-2 border-forest flex flex-col justify-between shadow-xl relative scale-[1.02] z-10">
+<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-forest text-white px-3.5 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider shadow-sm">
+        Рекомендуемый выбор
+      </div>
+<div>
+<div class="flex items-center justify-between mb-4 mt-1">
+<span class="text-[12px] font-mono font-bold uppercase text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded">Формат 02</span>
+<span class="text-[11px] font-mono font-semibold text-emerald-800">Комплексный</span>
+</div>
+<h3 class="text-[24px] font-extrabold text-forest mb-2">Premium</h3>
+<p class="text-[13.5px] text-clinical-subtle mb-6">
+          Глубокая работа с гормональным фоном, весом, энергией, спортом, фертильностью и регулярной связью с семейным врачом.
+        </p>
+<ul class="space-y-3 text-[13.5px] text-forest mb-8">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Все возможности формата Basic</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Эндокринный и метаболический чек-ап (140+ маркеров)</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Прямая связь с лечащим врачом в медицинском чате</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Коррекция гормонов, циркадных ритмов и сна</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Ежемесячная калибровка плана питания и добавок</span>
+</li>
+</ul>
+</div>
+<a class="w-full py-3 rounded-xl bg-forest hover:bg-emerald-deep text-white text-[13.5px] font-bold text-center transition-all shadow-md active:scale-[0.98]" href="#contact-section">
+        Обсудить формат на консультации
+      </a>
+</div>
+<!-- Format 3: VIP -->
+<div class="bg-white rounded-3xl p-7 border border-clinical-border flex flex-col justify-between shadow-sm hover:border-emerald-700/60 transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-[12px] font-mono font-bold uppercase text-clinical-subtle bg-surface-container px-2.5 py-1 rounded">Формат 03</span>
+<span class="text-[11px] font-mono font-semibold text-clinical-subtle">Максимум</span>
+</div>
+<h3 class="text-[24px] font-extrabold text-forest mb-2">VIP</h3>
+<p class="text-[13.5px] text-clinical-subtle mb-6">
+          Приоритетный доступ к консилиуму, комплексное сопровождение всей семьи, персональный ассистент здоровья и второе мнение.
+        </p>
+<ul class="space-y-3 text-[13.5px] text-forest mb-8">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Полное медицинское кураторство семьи</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Персональный медицинский консьерж-ассистент</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Консилиумы ведущих узких специалистов клиники</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-700 text-[18px] shrink-0 mt-0.5">check</span>
+<span>Выездной забор анализов и экспресс-координация</span>
+</li>
+</ul>
+</div>
+<a class="w-full py-3 rounded-xl border-2 border-forest text-forest hover:bg-forest hover:text-white text-[13.5px] font-bold text-center transition-all active:scale-[0.98]" href="#contact-section">
+        Обсудить формат на консультации
+      </a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: ПОЧЕМУ СТОИМОСТЬ ОБСУЖДАЕТСЯ ЛИЧНО -->
+<section class="relative z-10 w-full py-16 px-5 sm:px-8 bg-white border-t border-clinical-border">
+<div class="max-w-[1100px] mx-auto bg-surface-container-low rounded-3xl p-8 sm:p-12 border border-clinical-border flex flex-col md:flex-row items-center gap-8 shadow-sm">
+<div class="w-16 h-16 rounded-2xl bg-forest text-white flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[32px] text-emerald-300">verified_user</span>
+</div>
+<div>
+<h3 class="text-[22px] sm:text-[26px] font-extrabold text-forest tracking-tight mb-3">
+      Почему стоимость обсуждается лично
+    </h3>
+<p class="text-[15px] sm:text-[16px] text-clinical-subtle leading-relaxed">
+      Универсальной цены нет: формат зависит от состава семьи, медицинских задач, глубины диагностики, частоты связи с врачом и необходимости контроля динамики. Мы не предлагаем максимальный пакет вслепую — сначала разбираем ситуацию, затем подбираем медицински оправданный маршрут.
+    </p>
+</div>
+</div>
+</section>
+<!-- SECTION 6: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ АККОРДЕОН) -->
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/40 border-t border-clinical-border" id="faq-section">
+<div class="max-w-[1000px] mx-auto">
+<div class="text-center max-w-[760px] mx-auto mb-14">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">База знаний</span>
+</div>
+<h2 class="text-[32px] sm:text-[40px] font-extrabold tracking-tight text-forest leading-[1.15] mb-4">
+      Часто задаваемые вопросы
+    </h2>
+<p class="text-[16px] text-clinical-subtle">
+      Ответы на ключевые вопросы о порядке ведения, диагностике и консультациях.
+    </p>
+</div>
+<div class="space-y-3.5">
+<!-- FAQ 1 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Почему на сайте нет цен?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        В превентивной медицине не бывает двух одинаковых клинических картин. Одному пациенту требуется точечная нормализация ферритина и витамина D, а семейной паре — комплексная гормональная подготовка к зачатию и мониторинг кардиоваскулярных рисков. Мы не навязываем шаблонных прайс-листов: объем обследований и формат курации врач определяет строго по медицинским показаниям на первичной встрече.
+      </div>
+</details>
+<!-- FAQ 2 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Можно ли начать с одной консультации?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Да, безусловно. Первичная консультация — это независимый шаг. Врач глубоко собирает анамнез, изучает ваш образ жизни и жалобы, формулирует предварительную диагностическую гипотезу. После этого вы вместе решаете, ограничиться разовыми рекомендациями или перейти в формат постоянного кураторства.
+      </div>
+</details>
+<!-- FAQ 3 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Нужно ли приезжать в клинику?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Очный визит желателен для первичного осмотра и сдачи узкоспециализированных анализов в одном из наших филиалов в Иркутске. Однако для иногородних пациентов или при высокой занятости возможен гибридный формат с выездным забором биоматериала аккредитованными партнерами.
+      </div>
+</details>
+<!-- FAQ 4 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Можно ли наблюдаться дистанционно?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Да, мы ведем многих пациентов из других городов региона и страны в дистанционном режиме телемедицины. Врач координирует сдачу анализов в лабораториях вашего города, проводит подробные онлайн-разборы и постоянно контролирует терапию в чате.
+      </div>
+</details>
+<!-- FAQ 5 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Что если у меня уже есть свежие анализы?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Обязательно возьмите их с собой или прикрепите перед онлайн-консультацией. Если исследования сданы не более 1–3 месяцев назад и соответствуют клиническим стандартам, врач примет их в расчет. Вам не придется пересдавать показатели повторно.
+      </div>
+</details>
+<!-- FAQ 6 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Чем это отличается от обычного чек-апа?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Стандартный чек-ап — это моментальный снимок организма, после которого пациент часто остается один на один с бланком анализов. Превентивное сопровождение — это динамический процесс: мы не просто находим отклонения, а ведем вас за руку до восстановления показателей, корректируя питание, микроэлементы и нагрузки.
+      </div>
+</details>
+<!-- FAQ 7 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Чем это отличается от лаборатории?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Лаборатория лишь проводит химический анализ пробирки по усредненным популяционным границам нормы. Врач клиники «Добрый Доктор» оценивает клинический коридор оптимума, исследует кофакторы и биохимические цепочки, переводя массив лабораторных данных в персональную терапевтическую программу.
+      </div>
+</details>
+<!-- FAQ 8 -->
+<details class="group bg-white rounded-2xl border border-clinical-border p-5 sm:p-6 transition-all">
+<summary class="flex items-center justify-between cursor-pointer font-bold text-[16.5px] text-forest select-none">
+<span>Можно ли вести всю семью?</span>
+<span class="material-symbols-outlined text-emerald-800 transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-slate-100 text-[14.5px] text-clinical-subtle leading-relaxed">
+        Это наш ключевой профиль. Институт семейного врача позволяет объединить анамнез нескольких поколений: учитывать наследственные риски родителей, следить за развитием детей и поддерживать ресурс супругов в рамках единой согласованной стратегии.
+      </div>
+</details>
+</div>
+</div>
+</section>
+<!-- SECTION 7: FINAL CALL TO ACTION / FORM -->
+<section class="relative z-10 w-full py-24 px-5 sm:px-8 bg-white border-t border-clinical-border" id="contact-section">
+<div class="max-w-[960px] mx-auto bg-surface-container-low rounded-3xl p-8 sm:p-12 border border-clinical-border shadow-xl">
+<div class="text-center max-w-[680px] mx-auto mb-10">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-[11px] font-extrabold tracking-wider uppercase text-forest font-mono">Первый шаг</span>
+</div>
+<h2 class="text-[34px] sm:text-[44px] font-extrabold tracking-tight text-forest leading-[1.12] mb-4">
+      Начните с консультации
+    </h2>
+<p class="text-[16px] text-clinical-subtle leading-relaxed">
+      Оставьте контакты. Мы разберем ваш запрос, состав семьи и цели, а затем предложим подходящий формат диагностики или сопровождения.
+    </p>
+</div>
+<form class="max-w-[620px] mx-auto space-y-5" onsubmit="event.preventDefault(); alert('Заявка принята. Медицинский координатор свяжется с вами в течение 15 минут.');">
+<div>
+<label class="block text-[12.5px] font-mono font-bold uppercase tracking-wider text-forest mb-1.5" for="name">
+        Ваше имя
+      </label>
+<input class="w-full px-4 py-3 rounded-xl bg-white border border-clinical-border focus:border-forest focus:ring-1 focus:ring-forest text-[14px] text-forest placeholder:text-slate-400 shadow-sm" id="name" placeholder="Константин или Анна" required="" type="text"/>
+</div>
+<div>
+<label class="block text-[12.5px] font-mono font-bold uppercase tracking-wider text-forest mb-1.5" for="phone">
+        Контактный телефон
+      </label>
+<input class="w-full px-4 py-3 rounded-xl bg-white border border-clinical-border focus:border-forest focus:ring-1 focus:ring-forest text-[14px] text-forest placeholder:text-slate-400 shadow-sm" id="phone" placeholder="+7 (999) 000-00-00" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-[12.5px] font-mono font-bold uppercase tracking-wider text-forest mb-1.5" for="family-need">
+        Состав семьи или краткий запрос
+      </label>
+<select class="w-full px-4 py-3 rounded-xl bg-white border border-clinical-border focus:border-forest focus:ring-1 focus:ring-forest text-[14px] text-forest shadow-sm" id="family-need">
+<option value="family">Семейное ведение (родители + дети)</option>
+<option value="personal">Индивидуальное ведение (для себя)</option>
+<option value="couple">Пара (подготовка к беременности / гормоны)</option>
+<option value="parents">Ведение родителей старшего возраста</option>
+<option value="checkup">Первичная врачебная консультация с анализами</option>
+</select>
+</div>
+<div class="pt-2">
+<label class="flex items-start gap-2.5 cursor-pointer select-none">
+<input class="mt-1 rounded text-emerald-800 focus:ring-emerald-700 border-clinical-border" required="" type="checkbox"/>
+<span class="text-[12px] text-clinical-subtle leading-snug">
+          Я согласен(-на) на обработку персональных данных в соответствии с Федеральным законом № 152-ФЗ и политикой конфиденциальности клиники.
+        </span>
+</label>
+</div>
+<div class="pt-4">
+<button class="w-full py-4 rounded-xl bg-forest hover:bg-emerald-deep text-white text-[15px] font-bold tracking-tight shadow-md transition-all hover:scale-[1.005] active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
+<span>Записаться на консультацию</span>
+<span class="material-symbols-outlined text-[18px] text-emerald-300">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="w-full bg-tech-obsidian text-slate-300 py-12 px-5 sm:px-8 border-t border-slate-800">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-950 flex items-center justify-center text-emerald-400">
+<span class="material-symbols-outlined text-[18px]">eco</span>
+</div>
+<div>
+<span class="font-extrabold text-white text-[16px] tracking-tight">Добрый Доктор</span>
+<span class="block text-[11px] text-slate-400">Центр превентивной медицины • Иркутск</span>
+</div>
+</div>
+<div class="text-[12px] text-slate-400 text-center md:text-left">
+      © 2001–2025 Клиника «Добрый Доктор». Лицензия на осуществление медицинской деятельности ЛО-38-01-003681.
+    </div>
+<div class="flex items-center gap-4 text-[13px] font-medium text-slate-300">
+<a class="hover:text-emerald-400 transition-colors" href="tel:+73952232303">+7 (3952) 23-23-03</a>
+<span class="text-slate-600">•</span>
+<a class="hover:text-emerald-400 transition-colors" href="#">Политика конфиденциальности</a>
+</div>
+</div>
+</footer>
+<!-- Interactive Selector Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const whoChips = document.querySelectorAll('.quiz-chip-who');
+  const needChips = document.querySelectorAll('.quiz-chip-need');
+  const btnChatYes = document.getElementById('btn-chat-yes');
+  const btnChatNo = document.getElementById('btn-chat-no');
+  const recFormat = document.getElementById('recommendation-format');
+  const recDesc = document.getElementById('recommendation-desc');
+
+  let selectedWho = 'family';
+  let selectedNeed = 'hormones';
+  let chatRegular = true;
+
+  function updateRecommendation() {
+    if (selectedWho === 'family' || chatRegular) {
+      if (selectedWho === 'family' && (selectedNeed === 'age' || selectedNeed === 'seniors')) {
+        recFormat.textContent = 'VIP (Семейный максимум)';
+        recDesc.textContent = 'Полное медицинское кураторство семьи из нескольких поколений, персональный ассистент здоровья, приоритетные консилиумы и координация обследований.';
+      } else {
+        recFormat.textContent = 'Premium (Расширенный)';
+        recDesc.textContent = 'Глубокая работа с гормональным статусом, метаболизмом, энергией и постоянная связь с семейным врачом в чате для своевременной коррекции.';
+      }
+    } else {
+      recFormat.textContent = 'Basic (Профилактический)';
+      recDesc.textContent = 'Плановый контроль дефицитов, регулярные чек-апы и разовые экспертные консультации для поддержания стабильного ресурса организма.';
+    }
+  }
+
+  whoChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      whoChips.forEach(c => {
+        c.classList.remove('bg-forest', 'text-white', 'border-forest', 'shadow-sm');
+        c.classList.add('bg-white', 'text-forest', 'border-clinical-border');
+      });
+      chip.classList.add('bg-forest', 'text-white', 'border-forest', 'shadow-sm');
+      chip.classList.remove('bg-white', 'text-forest', 'border-clinical-border');
+      selectedWho = chip.dataset.value;
+      updateRecommendation();
+    });
+  });
+
+  needChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      needChips.forEach(c => {
+        c.classList.remove('bg-forest', 'text-white', 'border-forest', 'shadow-sm');
+        c.classList.add('bg-white', 'text-forest', 'border-clinical-border');
+      });
+      chip.classList.add('bg-forest', 'text-white', 'border-forest', 'shadow-sm');
+      chip.classList.remove('bg-white', 'text-forest', 'border-clinical-border');
+      selectedNeed = chip.dataset.value;
+      updateRecommendation();
+    });
+  });
+
+  btnChatYes.addEventListener('click', () => {
+    chatRegular = true;
+    btnChatYes.className = 'px-5 py-2 rounded-lg text-[13px] font-bold bg-forest text-white transition-all';
+    btnChatNo.className = 'px-5 py-2 rounded-lg text-[13px] font-semibold text-clinical-subtle hover:text-forest transition-all';
+    updateRecommendation();
+  });
+
+  btnChatNo.addEventListener('click', () => {
+    chatRegular = false;
+    btnChatNo.className = 'px-5 py-2 rounded-lg text-[13px] font-bold bg-forest text-white transition-all';
+    btnChatYes.className = 'px-5 py-2 rounded-lg text-[13px] font-semibold text-clinical-subtle hover:text-forest transition-all';
+    updateRecommendation();
+  });
+});
+</script>
+</body></html>
