@@ -32,8 +32,8 @@
 <a class="site-nav-link" href="#">Главная</a>
 <a class="site-nav-link" href="#route-section">Маршрут</a>
 <a class="site-nav-link" href="#directions-section">Направления</a>
-<a class="site-nav-link" href="#formats-section">Форматы ведения</a>
 <a class="site-nav-link" href="#doctors-section">Врачи</a>
+<a class="site-nav-link" href="#formats-section">Форматы ведения</a>
 <a class="site-nav-link" href="#faq-section">Вопросы</a>
 <a class="site-nav-link" href="#contact-section">Контакты</a>
 </nav>
@@ -142,7 +142,7 @@
 <!-- Center Interactive Waveform & Core Index Banner -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center my-6">
 <!-- Wave Canvas -->
-<div class="lg:col-span-8 bg-clinical-ice rounded-2xl p-4 border border-clinical-border relative overflow-hidden h-[180px] flex items-center justify-center">
+<div class="health-map-wave lg:col-span-8 bg-clinical-ice rounded-2xl p-4 border border-clinical-border relative overflow-hidden h-[180px] flex items-center justify-center">
 <svg class="absolute inset-0 w-full h-full opacity-40" preserveaspectratio="none" viewbox="0 0 600 160">
 <defs>
 <pattern height="20" id="tech-grid" patternunits="userSpaceOnUse" width="20">
@@ -194,14 +194,14 @@
 <path class="bio-flow-line" d="M -10 80 Q 75 12, 160 80 T 300 80 T 440 80 T 610 80" filter="url(#glowFilter)" stroke="url(#emeraldWaveGrad)" stroke-linecap="round" stroke-width="2.6"></path>
 <path class="bio-flow-pulse" d="M -10 80 Q 75 148, 160 80 T 300 80 T 440 80 T 610 80" stroke="url(#limeWaveGrad)" stroke-linecap="round" stroke-width="2"></path>
 </svg>
-<div class="absolute left-[28%] top-[35%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="health-map-marker absolute left-[28%] top-[35%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
 <div class="px-2.5 py-0.5 rounded-md bg-forest text-white text-[10px] font-mono font-medium shadow-sm mb-1">Индекс теломер</div>
 <div class="relative flex items-center justify-center">
 <span class="pulse-dot absolute w-4 h-4 rounded-full bg-emerald-400"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 border border-white"></span>
 </div>
 </div>
-<div class="absolute left-[65%] top-[65%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
+<div class="health-map-marker health-map-marker-late absolute left-[65%] top-[65%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer">
 <div class="relative flex items-center justify-center">
 <span class="pulse-dot absolute w-4 h-4 rounded-full bg-lime-400"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-lime-600 border border-white"></span>
@@ -210,11 +210,11 @@
 </div>
 </div>
 <!-- Core Index Card -->
-<div class="lg:col-span-4 bg-forest text-white rounded-2xl p-6 flex flex-col justify-between h-full border border-emerald-900 shadow-md">
+<div class="health-map-score lg:col-span-4 bg-forest text-white rounded-2xl p-6 flex flex-col justify-between h-full border border-emerald-900 shadow-md">
 <div>
 <span class="text-[11px] uppercase font-bold tracking-widest text-emerald-200/70 font-mono">Индекс ресурсов организма</span>
 <div class="flex items-baseline gap-2 mt-2">
-<span class="text-[44px] font-extrabold text-white tracking-tight leading-none font-mono">96.8</span>
+<span class="health-score-value text-[44px] font-extrabold text-white tracking-tight leading-none font-mono" data-score="96.8">96.8</span>
 <span class="text-[18px] font-bold text-emerald-300 font-mono">/100</span>
 </div>
 </div>
@@ -226,7 +226,7 @@
 </div>
 <!-- 6 Clinical Telemetry Badges (fully in Russian) -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-2">
-<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="health-map-metric bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Биологический возраст</span>
 <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 font-extrabold text-[10px] font-mono">−6.6 лет</span>
@@ -237,7 +237,7 @@
 </div>
 <span class="text-[11px] text-emerald-800 font-medium mt-1">Омоложение клеточных систем</span>
 </div>
-<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="health-map-metric bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Витамин D3 (25-OH)</span>
 <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
@@ -248,7 +248,7 @@
 </div>
 <span class="text-[11px] text-clinical-subtle font-medium mt-1">Физиологический баланс</span>
 </div>
-<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="health-map-metric bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Сон и восстановление</span>
 <span class="text-[12px] font-extrabold text-emerald-800 font-mono">94%</span>
@@ -261,7 +261,7 @@
 </div>
 <span class="text-[11px] text-clinical-subtle font-medium mt-1">Нейро-вегетативная стабильность</span>
 </div>
-<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="health-map-metric bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Гормональный статус</span>
 <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
@@ -272,7 +272,7 @@
 </div>
 <span class="text-[11px] text-clinical-subtle font-medium mt-1">Индекс стресса: низкий</span>
 </div>
-<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="health-map-metric bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Метаболический статус</span>
 <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
@@ -282,7 +282,7 @@
 </div>
 <span class="text-[11px] text-emerald-800 font-medium mt-1">Гликемическая стабильность</span>
 </div>
-<div class="bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
+<div class="health-map-metric bg-surface-container-low rounded-xl p-4 border border-clinical-border flex flex-col justify-between">
 <div class="flex items-center justify-between">
 <span class="text-[11px] font-bold text-clinical-subtle uppercase font-mono">Маркеры воспаления</span>
 <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
@@ -302,7 +302,7 @@
 </a>
 </main>
 <!-- SECTION 1: КАК УСТРОЕН МЕДИЦИНСКИЙ МАРШРУТ (Этапы 01-06) -->
-<section class="relative z-10 w-full py-20 px-5 sm:px-8 border-t border-clinical-border bg-white text-forest" id="route-section">
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 border-t border-clinical-border bg-white text-forest stack-section stack-base" id="route-section">
 <div class="max-w-[1440px] mx-auto">
 <div class="flex flex-col items-start max-w-[780px] mb-12">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-clinical-ice border border-clinical-border mb-4">
@@ -442,7 +442,7 @@
 </div>
 </section>
 <!-- SECTION 2: ПОЧЕМУ НЕ ПРОСТО СДАТЬ АНАЛИЗЫ -->
-<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/60 border-t border-clinical-border">
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/60 border-t border-clinical-border stack-section stack-layer-1">
 <div class="max-w-[1440px] mx-auto">
 <div class="max-w-[800px] mb-12">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
@@ -545,7 +545,7 @@
 </div>
 </section>
 <!-- DIRECTIONS SECTION (Existing 6 Cards preserved with photos & Russian badges) -->
-<section class="relative z-10 w-full py-24 px-5 sm:px-8 border-t border-clinical-border bg-white text-forest" id="directions-section">
+<section class="relative z-10 w-full py-24 px-5 sm:px-8 border-t border-clinical-border bg-white text-forest stack-section stack-layer-2" id="directions-section">
 <div class="max-w-[1440px] mx-auto">
 <!-- Header Block -->
 <div class="flex flex-col items-start max-w-[760px] mb-14">
@@ -824,7 +824,7 @@
 </div>
 </section>
 <!-- DOCTORS & CLINICAL EXPERTISE SECTION (Preserving image 15) -->
-<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/80 border-t border-clinical-border" id="doctors-section">
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/80 border-t border-clinical-border stack-section stack-layer-3" id="doctors-section">
 <div class="max-w-[1440px] mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 <div class="lg:col-span-5">
@@ -894,7 +894,7 @@
 </div>
 </section>
 <!-- SECTION 3: ИНТЕРАКТИВНЫЙ ПОДБОР ФОРМАТА СОПРОВОЖДЕНИЯ (Без цен) -->
-<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-white border-t border-clinical-border" id="formats-section">
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-white border-t border-clinical-border stack-section stack-layer-4" id="formats-section">
 <div class="max-w-[1440px] mx-auto">
 <div class="max-w-[780px] mb-12">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-clinical-ice border border-clinical-border mb-4">
@@ -1013,7 +1013,7 @@
 </div>
 </section>
 <!-- SECTION 4: УРОВНИ СОПРОВОЖДЕНИЯ (3 карточки без цен) -->
-<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/50 border-t border-clinical-border">
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/50 border-t border-clinical-border stack-section stack-layer-5">
 <div class="max-w-[1440px] mx-auto">
 <div class="text-center max-w-[760px] mx-auto mb-14">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
@@ -1140,24 +1140,8 @@
 </div>
 </div>
 </section>
-<!-- SECTION 5: ПОЧЕМУ СТОИМОСТЬ ОБСУЖДАЕТСЯ ЛИЧНО -->
-<section class="relative z-10 w-full py-16 px-5 sm:px-8 bg-white border-t border-clinical-border">
-<div class="max-w-[1100px] mx-auto bg-surface-container-low rounded-3xl p-8 sm:p-12 border border-clinical-border flex flex-col md:flex-row items-center gap-8 shadow-sm">
-<div class="w-16 h-16 rounded-2xl bg-forest text-white flex items-center justify-center shrink-0 shadow-sm">
-<span class="material-symbols-outlined text-[32px] text-emerald-300">verified_user</span>
-</div>
-<div>
-<h3 class="text-[22px] sm:text-[26px] font-extrabold text-forest tracking-tight mb-3">
-      Почему стоимость обсуждается лично
-    </h3>
-<p class="text-[15px] sm:text-[16px] text-clinical-subtle leading-relaxed">
-      Универсальной цены нет: формат зависит от состава семьи, медицинских задач, глубины диагностики, частоты связи с врачом и необходимости контроля динамики. Мы не предлагаем максимальный пакет вслепую — сначала разбираем ситуацию, затем подбираем медицински оправданный маршрут.
-    </p>
-</div>
-</div>
-</section>
 <!-- SECTION 6: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ АККОРДЕОН) -->
-<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/40 border-t border-clinical-border" id="faq-section">
+<section class="relative z-10 w-full py-20 px-5 sm:px-8 bg-surface-container-low/40 border-t border-clinical-border stack-section stack-layer-6" id="faq-section">
 <div class="max-w-[1000px] mx-auto">
 <div class="text-center max-w-[760px] mx-auto mb-14">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
@@ -1256,7 +1240,7 @@
 </div>
 </section>
 <!-- SECTION 7: FINAL CALL TO ACTION / FORM -->
-<section class="relative z-10 w-full py-24 px-5 sm:px-8 bg-white border-t border-clinical-border" id="contact-section">
+<section class="relative z-10 w-full py-24 px-5 sm:px-8 bg-white border-t border-clinical-border stack-section stack-layer-7" id="contact-section">
 <div class="max-w-[960px] mx-auto bg-surface-container-low rounded-3xl p-8 sm:p-12 border border-clinical-border shadow-xl">
 <div class="text-center max-w-[680px] mx-auto mb-10">
 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-clinical-border mb-4">
